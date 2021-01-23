@@ -1,15 +1,47 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <!-- <link rel="stylesheet" href="./styles/checkbox.css"> -->
+    <link rel="stylesheet" href="{% static 'styles/checkbox.css' %}">
+    <link rel="stylesheet" href="{% static 'styles/index.css'%}">
+    <!-- <link rel="stylesheet" href="./styles/index.css"> -->
 </head>
 <body>
-    <h2>This is a test page</h2>
-    {% for todo in todo_list %}
-        <h3>{{todo.text}}</h3>
-    {% endfor %}
+    <section>
+        <div class="create_container">
+            <input 
+            class="create_input"
+            type="text"
+            placeholder="Write new task"
+            />
+            <button class="create_button">Add</button>
+        </div>
+    
+        <div class="todo_container">
+            {% for todo in todo_list%}
+            <div class="todo_item">
+                <div class="todo_item_header">
+                    <label class="checkbox_container">
+                        <input type="checkbox"/>
+                        <span class="checkmark"></span>
+                    </label>
+                    <h4>{{todo.text}}</h4>
+                </div>
+                <div class="todo_item_footer">
+                <p>{{todo.created_at}}</p>
+                    <div class="action_buttons">
+                        <img src="{% static './icons/unmarked_star.png' %}"/>
+                        <img src="{% static './icons/delete.png' %}"/>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </section>
 
 </body>
 </html>
