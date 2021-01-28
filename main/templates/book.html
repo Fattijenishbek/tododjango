@@ -1,0 +1,114 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Todo</title>
+    <!-- <link rel="stylesheet" href="./styles/index.css" /> -->
+    <link rel="stylesheet" href="{% static 'styles/book_style.css' %}" />
+    <!-- <link rel="stylesheet" href="./styles/checkbox.css"> -->
+    <link rel="stylesheet" href="{% static 'styles/checkbox.css' %}">
+  </head>
+<body>
+    <section>
+        <div class="create_container">
+            <form action="{% url 'add-book' %}" method="POST">
+            {% csrf_token %}
+            <input
+              class="create_input"
+              type="text"
+              placeholder="Write here a title"
+              name="book_title"
+            />
+            <input
+              class="create_input"
+              type="text"
+              placeholder="Write here a subtitle"
+              name="book_subtitle"
+            />
+            <input
+              class="create_input"
+              type="text"
+              placeholder="Write here a description"
+              name="book_description"
+            />
+            <input
+              class="create_input"
+              type="text"
+              placeholder="Write here a price"
+              name="book_price"
+            />
+            <input
+              class="create_input"
+              type="text"
+              placeholder="Write here a genre"
+              name="book_genre"
+            />
+            <input
+              class="create_input"
+              type="text"
+              placeholder="Write here an author"
+              name="book_author"
+            />
+            <input
+              class="create_input"
+              type="text"
+              placeholder="Write here a year"
+              name="book_year"
+            />           
+            <button class="create_button">Add</button>
+            </form>
+          </div>
+
+          <div class="book_container">
+
+            {% for book in book_list %}
+                <div class="book_item
+                    {% if book.is_favorite %} 
+                        marked
+                    {% elif book.is_closed %}
+                        done
+                    {% endif %}
+                ">
+                    
+                    
+                    <div class="book_item_header">
+                        <a href="{% url 'close-book' book.id %}"><h4>{{ book.title }}</h4></a>
+                        <ul>
+                            <li>{{book.subtitle}}</li>
+                            <li>{{book.description}}</li>
+                            <li>{{book.genre}}</li>
+                            <li>{{book.author}}</li>
+                            <li>{{book.year}}</li>
+                        </ul>
+                        <h3>{{book.price}} $</h3>
+                    </div>
+                    <div class="book_item_footer">
+                        <label class="checkbox_container">
+                            <input type="checkbox" 
+                                {% if book.is_closed %}
+                                    checked
+                                {% endif %}
+                            />
+                            <span class="checkmark"></span>
+                        </label>
+                        <p>{{book.date}}</p>
+                        <div class="action_buttons">
+                            {% if book.is_favorite %} 
+                            <a href="{% url 'mark-book' book.id %}"><img src="{% static './icons/marked_star.png' %}" /></a>
+                            {% else %}
+                            <a href="{% url 'mark-book' book.id %}"><img src="{% static './icons/unmarked_star.png' %}" /></a>
+                            {% endif %}
+
+
+                            <a href="{% url 'delete-book' book.id %}"><img src="{% static './icons/delete.png' %}"/></a>
+                            <a href="{% url 'book' book.id %}">***</a>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </section>
+</body>
+</html>

@@ -1,0 +1,128 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    color: black;
+}
+
+section{
+    width: 100%;
+    padding: 20px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.create_container{
+    width: 80%;
+}
+
+input{
+    display: block;
+    font-size:15px;
+    padding:4px 2px;
+    border:solid 3px lightgreen;
+    border-radius: 10px;
+    width:200px;
+    margin:2px 0 5px 10px;
+    background-color: lightblue;
+}
+
+button{
+    padding: 12px 20px;
+    background-color: #8A2BE2;
+    border: 1px solid #370041;
+    color: white;
+    font-size: 18px;
+    text-transform: uppercase;
+    font-weight: bold;
+    border-radius: 3px;
+    cursor: pointer;
+    margin:2px 0 5px 70px;
+
+}
+
+button:active{
+    border: 1px solid #a359e9;
+    box-shadow: 2px 2px 5px 3px #a955e0;
+}
+
+.book_container{
+    padding: 30px 20px;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+.book_item{
+    border: 1px solid #8A2BE2;
+    border-radius: 10px;
+    width: 30%;
+    padding: 5px 15px;
+    background-color: rgb(190, 190, 243);
+    margin-bottom: 20px;
+}
+
+.book_item_header{
+    display: block;
+    align-items: center;
+    min-height: 35px;
+}
+
+ul {
+    padding: 0px 25px;
+    margin: 0;
+  }
+
+
+.book_item_header h4{
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    padding: 5px 0px;
+    font-size: 18px;
+    color: red;
+}
+
+
+.book_item_footer{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px 5px;
+}
+
+.book_item_footer p{
+    font-size: 15px;
+    font-family: sans-serif;
+}
+
+.book_item_footer .action_buttons{
+    display: flex;
+}
+
+.book_item_footer img{
+    width: 25px;
+    height: 25px;
+    margin: 0 5px;
+    cursor: pointer;
+}
+
+.book_item.done{
+    background-color: #e0e0e0;
+    text-decoration: line-through;
+    /* color: #757575; */
+}
+
+.book_item.done h4, .book_item.done p, .book_item.done span{
+    color: #757575;
+}
+
+.book_item.done img{
+    opacity: 0.5;
+}
+
+.book_item.marked{
+    background-color: yellow;
+    border: 2px solid yellow    ;
+}

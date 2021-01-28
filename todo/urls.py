@@ -32,6 +32,14 @@ urlpatterns = [
 
     path("add/", add, name="add"),
     path("update/", update, name="update"),
-    path("deleted/", deleted, name="deleted")
+    path("deleted/", deleted, name="deleted"),
+
+    path("read/", read , name="read"),
+    path("add-book/", add_book, name="add-book"),
+    path("delete-book/<id>/", delete_book, name="delete-book"),
+    path("mark-book/<id>/", mark_book, name="mark-book"),
+    path("close-book/<id>/", close_book, name="close-book"),
+    path("book/<id>/", book, name="book"),
+
 ]   + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT) \
     +static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

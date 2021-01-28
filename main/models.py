@@ -18,3 +18,4 @@ class Book(models.Model):
     year=models.IntegerField()
     date=models.DateTimeField(auto_now_add=True)
     is_favorite=models.BooleanField(default=False)
+    is_closed = models.BooleanField(default=False)
