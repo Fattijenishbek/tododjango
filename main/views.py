@@ -42,3 +42,12 @@ def close_todo(request, id):
     todo.is_closed=not todo.is_closed
     todo.save()
     return redirect(test)
+
+def add(request):
+    return render(request, "add.html")
+
+def update(request):
+    return render(request, "update.html")
+
+def deleted(request):
+    return render(request, "deleted.html")
